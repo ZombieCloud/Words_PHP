@@ -11,61 +11,45 @@ if ($connection->connect_error) die($connection->connect_error);
 
 
 <form method = "post" enctype="multipart/form-data">
-<table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
+<table border="0" cellpadding="1" cellspacing="1" class="box">
 
     <tr>
-        <td width="600">
-            en word <input type="text" name="en">
-        </td>        
+        <td width="100">EN</td>
+        <td width="1800px"><input style="height: 22px; width: 1000px" type="text" name="en"></td>
     </tr>
     
     <tr>
-        <td width="600">
-            ru word <input type="text" name="ru">
-        </td>        
-    </tr>
+        <td width="100">RU</td>
+        <td width="1800px"><input style="height: 22px; width: 1000px" type="text" name="ru"></td>        
+    </tr>    
     
     <tr>
-        <td width="600">
-            Level <input type="text" name="level">
-        </td>        
-    </tr>
+        <td width="100">NUM</td>
+        <td width="1800px"><input style="height: 22px; width: 1000px" type="text" name="num"></td>        
+    </tr>    
     
     <tr>
-        <td width="600">
-            hit <input type="text" name="hit">
-        </td>        
-    </tr>
-    
-    <tr>
-        <td width="600">
-            num <input type="text" name="num">
-        </td>        
-    </tr>
-    
-    <tr>
-        <td width="600">
-            sound_type <input type="text" name="sound_type">
-        </td>        
-    </tr>
-    
-    <tr>
-        <td width="600">
+        <td width="100">EN SOUND</td>
+        <td width="1800px">
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-            <input name="en_sound" type="file" id="en_sound">
+            <input style="height: 22px; width: 1000px" name="en_sound" type="file" id="en_sound">
         </td>        
     </tr>
     
     <tr>
-        <td width="600">
+        <td width="100">RU SOUND</td>
+        <td width="1800px">
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-            <input name="ru_sound" type="file" id="ru_sound">
+            <input style="height: 22px; width: 1000px" name="ru_sound" type="file" id="ru_sound">
         </td>        
     </tr>
     
+    <tr><td width="100"></td><td style="height: 22px; width: 1000px"></td></tr>
+    
     <tr>
-        <td width="100">
-            <input name="upload" type="submit" class="box" id="upload" value=" Upload ">
+        <td width="100">GO</td>
+        <td width="1800px">
+            <input name="upload" type="submit" class="box" id="upload" value="Go" >
         </td>
     </tr>    
     
@@ -77,7 +61,7 @@ if ($connection->connect_error) die($connection->connect_error);
 
 <?php
 //Вставка
-if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['level']) && isset($_POST['hit']) && isset($_POST['num']) && $_FILES['en_sound']['size'] > 0 && $_FILES['ru_sound']['size'] > 0 && isset($_POST['sound_type']))
+if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['level']) && isset($_POST['hit']) && isset($_POST['num']) && $_FILES['en_sound']['size'] > 0 && $_FILES['ru_sound']['size'] > 0)
 {
     
     // en_sound
@@ -115,18 +99,15 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['level']) && isse
     
 //    echo $en_fileName;
 //    echo $en_fileType;
-//    echo $en_tmpName;
-    
+//    echo '<br>';
+//    echo $ru_fileType;
+//    echo $en_tmpName;    
     
     $en = get_post($connection, 'en');
-    $ru = get_post($connection, 'ru');
-    $level = get_post($connection, 'level');
-    $hit = get_post($connection, 'hit');
-    $num = get_post($connection, 'num');
-    $sound_type = get_post($connection, 'sound_type');
+    $ru = get_post($connection, 'ru');    
+    $num = get_post($connection, 'num');    
     
-    $query = "INSERT INTO jopp289_words1.tab_words1_test (en, ru, level, hit, num, sound_type, en_sound, ru_sound) VALUES" . "('$en', '$ru', '$level', '$hit', '$num', '$sound_type', '$en_content', '$ru_content')";
-
+    $query = "INSERT INTO jopp289_words1.tab_words1_test (en, ru, level, hit, num, en_sound, ru_sound, en_sound_type, ru_sound_type) VALUES" . "('$en', '$ru', '0', '0', '$num', '$en_content', '$ru_content', '$en_fileType', '$ru_fileType')";
 //    echo $query;
     
     $result = $connection->query($query);
@@ -139,38 +120,6 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['level']) && isse
 
 
 <?php
-/*
-if(isset($_POST['upload']) && $_FILES['userfile']['size'] > 0)
-{
-$fileName = $_FILES['userfile']['name'];
-$tmpName  = $_FILES['userfile']['tmp_name'];
-$fileSize = $_FILES['userfile']['size'];
-$fileType = $_FILES['userfile']['type'];
-
-$fp      = fopen($tmpName, 'r');
-$content = fread($fp, filesize($tmpName));
-$content = addslashes($content);
-fclose($fp);
-
-if(!get_magic_quotes_gpc())
-{
-    $fileName = addslashes($fileName);
-}
-
-include 'library/config.php';
-include 'library/opendb.php';
-
-$query = "INSERT INTO upload (name, size, type, content ) ".
-"VALUES ('$fileName', '$fileSize', '$fileType', '$content')";
-
-mysql_query($query) or die('Error, query failed');
-include 'library/closedb.php';
-
-echo "<br>File $fileName uploaded<br>";
-}
-*/  
-
-
 
 
 /*
