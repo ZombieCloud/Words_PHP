@@ -59,6 +59,7 @@ if ($connection->connect_error) die($connection->connect_error);
 
 
 
+
 <?php
 //Вставка
 if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['level']) && isset($_POST['hit']) && isset($_POST['num']) && $_FILES['en_sound']['size'] > 0 && $_FILES['ru_sound']['size'] > 0)
