@@ -30,14 +30,14 @@
                 <div class="form-row">
                     <label>
                         <span>Who?</span>
-                        <input type="text" name="who">
+                        <input type="text" name="who" value="Me">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Password</span>
-                        <input type="password" name="password">
+                        <input type="password" name="password" value="4078940">
                     </label>
                 </div>
 
@@ -63,13 +63,15 @@ if (isset($_POST['who']) && isset($_POST['password']))
 
     if (($who == "Me") && ($psw == "4078940"))
     {
-        echo '<div class="auth-result">Угадал</div>';
+//        echo '<div class="auth-result">Угадал</div>';
+//        echo '<a href = actions.php>Ввод нового</a><br/>';
+        header("Location: actions.php");
+        exit();
     }
     else if (($who <> "") && ($psw <> ""))    
     {
         echo '<div class="auth-result">Не угадал !!!</div>';
-    }
-    
+    }    
 }
 
 else 
