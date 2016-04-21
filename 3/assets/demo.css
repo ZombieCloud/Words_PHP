@@ -11,7 +11,7 @@ html{
 }
 
 body{
-//	font:14px/1.5 Arial, Helvetica, sans-serif;
+	font:14px/1.5 Arial, Helvetica, sans-serif;
 	margin:0;
 }
 
@@ -28,7 +28,7 @@ header{
 
 header h1{
     float: left;
-//	font: normal 24px/1.5 'Open Sans', sans-serif;
+	font: normal 24px/1.5 'Open Sans', sans-serif;
 	color: #fff;
 }
 
@@ -39,7 +39,7 @@ header a{
     display: inline-block;
     padding: 13px 50px;
     border-radius: 3px;
-//    font: bold 14px/1 'Open Sans', sans-serif;
+    font: bold 14px/1 'Open Sans', sans-serif;
     text-transform: uppercase;
     background-color:#F05283;
 
@@ -105,6 +105,8 @@ ul li{
     margin-bottom: 75px;
 }
 
+
+
 /* -- Demo ads -- */
 
 @media (max-width: 1200px) {
@@ -116,9 +118,16 @@ ul li{
 .tz-link{
 	text-decoration: none;
 	color: #fff !important;
-//	font: bold 36px Arial,Helvetica,sans-serif !important;
+	font: bold 36px Arial,Helvetica,sans-serif !important;
 }
 
 .tz-link span{
 	color: #da431c;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+.main-content-new-row{
+    margin-bottom: 75px;
 }

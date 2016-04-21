@@ -12,8 +12,7 @@ if ($connection->connect_error) die($connection->connect_error);
 
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>New row</title>
@@ -25,69 +24,67 @@ if ($connection->connect_error) die($connection->connect_error);
 
 
 
-<div class="main-content">
-<form class="form-login" method = "post" enctype="multipart/form-data">
-    <div class="form-log-in-with-email">
-        <div class="form-white-background">
-            <div class="form-title-row">
-                    <h1>New row</h1>
+<div class="main-content-new-row">
+    <form class="form-login-new-row" method = "post" enctype="multipart/form-data">
+        <div class="form-log-in-with-email-new-row">
+            <div class="form-white-background-new-row">
+                
+                
+                <div class="form-title-row-new-row">
+                        <h1>New row</h1>
                 </div>
 
 
-            <div class="form-row">
-                    <label>
-                        <span>EN</span>
-                        <input type="text" name="en">
-                    </label>
+                <div class="form-row-new-row">
+                        <label>
+                            <span>EN</span>
+                            <input type="text" name="en">
+                        </label>
                 </div>           
-            
-            
-            <div class="form-row">
-                    <label>
-                        <span>RU</span>
-                        <input type="text" name="ru">
-                    </label>
+
+
+                <div class="form-row-new-row">
+                        <label>
+                            <span>RU</span>
+                            <input type="text" name="ru">
+                        </label>
                 </div>           
-    
-            
-               <div class="form-row">
-                    <label>
-                        <span>NUM</span>
-                        <input type="text" name="num">
-                    </label>
+
+
+                <div class="form-row-new-row">
+                        <label>
+                            <span>NUM</span>
+                            <input type="text" name="num">
+                        </label>
                 </div>            
-    
-            
-                    <div class="form-row">
-                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-                        <label>                        
-                        <span>EN SOUND</span>
-                        <input type="file" name="en_sound" id="en_sound">
-                    </label>
-                </div>           
-    
-    
-                            <div class="form-row">
-                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-                                <label>                        
-                        <span>RU SOUND</span>
-                        <input type="file" name="ru_sound" id="ru_sound">
-                    </label>
-                </div>           
-    
-            
-            
-    <div class="form-row">
-                    <button type="submit" name="upload" id="upload">GO</button>
-                </div>
-        
-       
-  
 
-    </div>
+
+                <div class="form-row-new-row">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+                        <label>                        
+                            <span>EN SOUND</span>
+                            <input type="file" name="en_sound" id="en_sound">
+                        </label>
+                </div>           
+
+
+                <div class="form-row-new-row">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+                        <label>                        
+                            <span>RU SOUND</span>
+                            <input type="file" name="ru_sound" id="ru_sound">
+                        </label>
+                </div>           
+
+
+                <div class="form-row-new-row">
+                        <button type="submit" name="upload" id="upload">GO</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
 </div>
-</form>
-    </div>
 
 
 

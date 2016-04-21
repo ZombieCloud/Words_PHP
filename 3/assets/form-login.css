@@ -4,24 +4,23 @@ html{
 }
 
 .form-login{
-    position: relative;    
+    position: relative;        
     max-width: 1000px;
-    width: 100%;
-    
+    width: 100%;    
     margin-left: auto;
     margin-right: auto;    
     margin-top: 130px;
 //    margin-left: 150px;
 //    margin-right: 150px;
 
-//    font: bold 14px sans-serif;
+    font: bold 14px sans-serif;
     text-align: center;
 }
 
 .form-log-in-with-email{
     position: relative;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: top;    
     margin-right: 130px;
     text-align: center;
 }
@@ -34,6 +33,7 @@ html{
     padding: 60px 80px;
     margin-bottom: 32px;
 }
+
 
 .form-log-in-with-email .form-row{
     text-align: left;
@@ -173,4 +173,81 @@ html{
 
 
 
+
+
+
+
+////////////////// NEW ROW /////////////////////////////////////////////////////////////////////////////////
+.form-login-new-row{
+    position: relative;        
+    max-width: 1500px;
+    width: 100%;    
+    margin-left: auto;
+    margin-right: auto;    
+    margin-top: 130px;
+//    margin-left: 150px;
+//    margin-right: 150px;
+    font: bold 14px sans-serif;
+    text-align: center;
+}
+
+
+.form-log-in-with-email-new-row{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 130px;
+    text-align: center;
+}
+
+.form-log-in-with-email-new-row .form-white-background-new-row{
+    width: 1300px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 60px 80px;
+    margin-bottom: 32px;
+}
+
+
+.form-log-in-with-email-new-row .form-row-new-row{
+    text-align: left;
+    margin-bottom: 23px;
+}
+
+.form-log-in-with-email-new-row .form-title-row-new-row{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.form-log-in-with-email-new-row .form-row-new-row > label span{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #5f5f5f;
+    width: 600px;
+    text-align: right;
+    padding-right: 25px;
+}
+
+.form-log-in-with-email-new-row input{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 230px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 18px;
+    border: 1px solid #dbdbdb;
+}
+
+.form-log-in-with-email-new-row button{
+    display: block;
+    border-radius: 2px;
+    background-color:  #6caee0;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 15px 35px;
+    border: 0;
+    margin: 55px auto 0;
+    cursor: pointer;
+}
 
