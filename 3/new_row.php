@@ -149,7 +149,7 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['num']) && $_FILE
 
 else
 {
-    echo 'Херня какая-то';    
+    echo 'SHIT !!!';    
 }
 
 
