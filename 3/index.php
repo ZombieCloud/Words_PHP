@@ -65,6 +65,12 @@ if (isset($_POST['who']) && isset($_POST['password']))
     {
 //        echo '<div class="auth-result">Угадал</div>';
 //        echo '<a href = actions.php>Ввод нового</a><br/>';
+                
+        //Для аутентификации
+        session_start();
+        $_SESSION['user'] = $who;        
+        
+        //Идем дальше
         header("Location: actions.php");
         exit();
     }

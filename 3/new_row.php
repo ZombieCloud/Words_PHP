@@ -1,5 +1,16 @@
 <?php
 
+//Аутентификация
+session_start();
+session_regenerate_id();
+if(!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+}
+echo $_SESSION['user'];
+
+
+
 
 require_once 'login.php';
 
@@ -77,8 +88,8 @@ if ($connection->connect_error) die($connection->connect_error);
                 </div>           
 
 
-                <div class="form-row-new-row">
-                        <button type="submit" name="upload" id="upload">GO</button>
+                <div class="form-row-new-row">                    
+                        <button type="submit" name="upload" id="upload">Go</button>                        
                 </div>
 
             </div>
@@ -141,6 +152,7 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['num']) && $_FILE
     $num = get_post($connection, 'num');    
     
     $query = "INSERT INTO jopp289_words1.tab_words1_test (en, ru, level, hit, num, en_sound, ru_sound, en_sound_type, ru_sound_type) VALUES" . "('$en', '$ru', '0', '0', '$num', '$en_content', '$ru_content', '$en_fileType', '$ru_fileType')";
+//$query = "INSERT INTO jopp289_words1.tab_words1 (en, ru, level, hit, num, en_sound, ru_sound, en_sound_type, ru_sound_type) VALUES" . "('$en', '$ru', '0', '0', '$num', '$en_content', '$ru_content', '$en_fileType', '$ru_fileType')";
 //    echo $query;
     
     $result = $connection->query($query);
