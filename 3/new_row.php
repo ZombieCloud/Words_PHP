@@ -1,21 +1,21 @@
+        
+    
+    
 <?php
-
-//Аутентификация
-session_start();
-session_regenerate_id();
-if(!isset($_SESSION['user']))
-{
-    header("Location: index.php");
-}
-echo $_SESSION['user'];
-
+    //Аутентификация
+    session_start();
+    session_regenerate_id();
+    if(!isset($_SESSION['user']))
+    {
+        header("Location: index.php");
+    }
+    echo $_SESSION['user'];
 
 
-
-require_once 'login.php';
-
-$connection  =  new  mysqli($db_hostname,  $db_username,  $db_password,  $db_database);
-if ($connection->connect_error) die($connection->connect_error);
+    // Подключение к базе
+    require_once 'login.php';
+    $connection  =  new  mysqli($db_hostname,  $db_username,  $db_password,  $db_database);
+    if ($connection->connect_error) die($connection->connect_error);
 ?>
 
 
@@ -29,10 +29,12 @@ if ($connection->connect_error) die($connection->connect_error);
     <title>New row</title>
 
     <link rel="stylesheet" href="assets/demo.css">
-    <link rel="stylesheet" href="assets/form-login.css">
+    <link rel="stylesheet" href="assets/form-login.css">   
 </head>
 
 
+
+<body>
 
 
 <div class="main-content-new-row">
@@ -49,7 +51,7 @@ if ($connection->connect_error) die($connection->connect_error);
                 <div class="form-row-new-row">
                         <label>
                             <span>EN</span>
-                            <input type="text" name="en">
+                            <input type="text" name="en" id="en">
                         </label>
                 </div>           
 
@@ -57,7 +59,7 @@ if ($connection->connect_error) die($connection->connect_error);
                 <div class="form-row-new-row">
                         <label>
                             <span>RU</span>
-                            <input type="text" name="ru">
+                            <input type="text" name="ru" id="ru">
                         </label>
                 </div>           
 
@@ -65,7 +67,7 @@ if ($connection->connect_error) die($connection->connect_error);
                 <div class="form-row-new-row">
                         <label>
                             <span>NUM</span>
-                            <input type="text" name="num">
+                            <input type="text" name="num" id="num">
                         </label>
                 </div>            
 
@@ -99,11 +101,23 @@ if ($connection->connect_error) die($connection->connect_error);
 
 
 
+<script type="text/javascript">
+    window.onload = function(){
+//        alert(document.getElementById("hidden_max_num").value);
+        document.getElementById("num").value = document.getElementById("hidden_max_num").value;
+    };
+</script>   
+    
+    
+    
+</body>
+
+
+
 
 
 
 <?php
-
 //Вставка
 if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['num']) && $_FILES['en_sound']['size'] > 0 && $_FILES['ru_sound']['size'] > 0)
 {
@@ -152,7 +166,6 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['num']) && $_FILE
     $num = get_post($connection, 'num');    
     
     $query = "INSERT INTO jopp289_words1.tab_words1_test (en, ru, level, hit, num, en_sound, ru_sound, en_sound_type, ru_sound_type) VALUES" . "('$en', '$ru', '0', '0', '$num', '$en_content', '$ru_content', '$en_fileType', '$ru_fileType')";
-//$query = "INSERT INTO jopp289_words1.tab_words1 (en, ru, level, hit, num, en_sound, ru_sound, en_sound_type, ru_sound_type) VALUES" . "('$en', '$ru', '0', '0', '$num', '$en_content', '$ru_content', '$en_fileType', '$ru_fileType')";
 //    echo $query;
     
     $result = $connection->query($query);
@@ -160,8 +173,18 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['num']) && $_FILE
 }
 
 else
+    
 {
-    echo 'SHIT !!!';    
+    echo 'SHIT !!!';
+
+    $query_num = "SELECT MAX(num) + 1 AS max_num FROM jopp289_words1.tab_words1_test";
+    $result_num = $connection->query($query_num);
+    $result_num->data_seek(0);
+    $row_num = $result_num->fetch_array(MYSQLI_ASSOC);
+    $max_num = $row_num['max_num'];
+    
+    //Выводим $max_num  в скрытое поле, чтоб потом забрать значение в onload
+    ?><input type="hidden" name="hidden_max_num" value=<?php echo $max_num ?> id="hidden_max_num"><?php    
 }
 
 
