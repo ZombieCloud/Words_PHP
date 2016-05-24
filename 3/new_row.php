@@ -1,5 +1,3 @@
-        
-    
     
 <?php
     //Аутентификация
@@ -103,7 +101,6 @@
 
 <script type="text/javascript">
     window.onload = function(){
-//        alert(document.getElementById("hidden_max_num").value);
         document.getElementById("num").value = document.getElementById("hidden_max_num").value;
     };
 </script>   
@@ -169,29 +166,49 @@ if (isset($_POST['en']) && isset($_POST['ru']) && isset($_POST['num']) && $_FILE
 //    echo $query;
     
     $result = $connection->query($query);
-    if (!$result) die ($connection->error);
+    
+    if (!$result)
+    {
+        echo 'Something wrong((';
+        die ($connection->error);        
+    }
+    else
+    {
+        echo 'OK !!!';
+        get_max_num($connection);
+    };    
+    
 }
+
 
 else
     
 {
     echo 'SHIT !!!';
-
-    $query_num = "SELECT MAX(num) + 1 AS max_num FROM jopp289_words1.tab_words1_test";
-    $result_num = $connection->query($query_num);
-    $result_num->data_seek(0);
-    $row_num = $result_num->fetch_array(MYSQLI_ASSOC);
-    $max_num = $row_num['max_num'];
-    
-    //Выводим $max_num  в скрытое поле, чтоб потом забрать значение в onload
-    ?><input type="hidden" name="hidden_max_num" value=<?php echo $max_num ?> id="hidden_max_num"><?php    
+    get_max_num($connection);
 }
-
 
 
 
 $result->close();
 $connection->close();
+
+
+
+
+// Максимальный номер слова
+function get_max_num($con)
+{
+    $query_num = "SELECT MAX(num) + 1 AS max_num FROM jopp289_words1.tab_words1_test WHERE num < 100000";
+    $result_num = $con->query($query_num);
+    $result_num->data_seek(0);
+    $row_num = $result_num->fetch_array(MYSQLI_ASSOC);
+    $max_num = $row_num['max_num'];    
+    
+    //Выводим $max_num  в скрытое поле, чтоб потом забрать значение в onload
+    ?><input type="hidden" name="hidden_max_num" value=<?php echo $max_num ?> id="hidden_max_num"><?php
+}
+
 
 
 function get_post($connection, $var)
